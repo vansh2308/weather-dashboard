@@ -33,7 +33,7 @@ export default function Forecast(props) {
       <ul className="flex flex-col h-full my-3 pb-9 overflow-y-scroll">
         {[1, 2, 3, 4, 5, 6, 7].map((item) => {
           return(
-            <ForecastItem />
+            <ForecastItem key={item} />
           )
         })}
   

@@ -2,6 +2,8 @@ import wm1 from "./../assets/wm1.png"
 import wm2 from "./../assets/wm2.png"
 import wm3 from "./../assets/wm3.png"
 import { LuSearch } from "react-icons/lu";
+import UVTile from "./UVTile";
+import SunTile from "./SunTile";
 
 
 export default function Highlights(props){
@@ -10,8 +12,8 @@ export default function Highlights(props){
       <Tile title={"Wind Speed"} value={7.90} unit={"km/h"} wm={wm1}/>
       <Searchbar />
       <Tile title={"Humidity"} value={84} unit={"%"} wm={wm2}/>
-      <div className="uv"></div>
-      <div className="sun"></div>
+      <UVTile />
+      <SunTile />
       <Tile title={"Visibility"} value={3} unit={"km"} wm={wm3}/>
     </div>
   )
@@ -19,7 +21,6 @@ export default function Highlights(props){
 
 
 const Tile = ({title, value, unit, wm}) => {
-
   return(
     <div className="glassmorphism p-4 text-white text-md flex flex-col justify-between relative overflow-hidden">
       <h3 className="font-normal text-[0.7rem]">{title}</h3>
@@ -40,12 +41,7 @@ const Searchbar = (props) => {
       <div className="w-full h-1/2 bg-grey rounded-full flex justify-between items-center overflow-hidden">
         <input type="text" className="grow h-full p-5" style={{ "borderRight": "0.1px solid rgba(255, 255, 255, 0.4)" }} />
         <button onClick={() => console.log("hi nehal")}> <LuSearch className="m-5 text-[1.5rem] text-white" /> </button>
-        
-
       </div>
-
-
-
     </div>
   )
 }
