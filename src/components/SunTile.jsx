@@ -98,11 +98,11 @@ export default function SunTile(props) {
       <div className='flex justify-between px-[6%] bottom-4 text-yellow text-xs font-normal absolute w-full'>
         <div className='flex flex-col items-center'>
           <span>Sunrise</span>
-          <span className='text-grey text-sm font-medium'>5:45 AM</span>
+          <span className='text-white text-sm font-light'>5:45 AM</span>
         </div>
         <div className='flex flex-col items-center'>
           <span>Sunset</span>
-          <span className='text-grey text-sm font-medium'>7:45 PM</span>
+          <span className='text-white text-sm font-light'>7:45 PM</span>
         </div>
       </div>
 

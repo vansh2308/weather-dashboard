@@ -99,7 +99,7 @@ export default function UVTile(props) {
       <canvas ref={baselineRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" id="baselineCanvas"> </canvas>
       <canvas ref={canvasRef} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" id="canvas"> </canvas>
 
-      <div className='flex justify-between px-[9%] bottom-10 text-white text-xs font-thin absolute w-full'>
+      <div className='flex justify-between  px-[17%] bottom-7 text-white text-xs font-light absolute w-full'>
         <span>0</span>
         <span>12</span>
       </div>
