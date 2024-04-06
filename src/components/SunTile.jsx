@@ -17,8 +17,6 @@ export default function SunTile(props) {
     gradient.addColorStop(1, "#ff8157");
     gradient.addColorStop(0.5, "#ff8157");
     gradient.addColorStop(0, "#ffc62d");
-
-    console.log(gradient)
     ctx.fillStyle = gradient;
     ctx.fillRect(20, 20, 200, 100);
 

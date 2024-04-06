@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import Sidebar from './components/Sidebar'
-
 import CurrentWeather from './components/CurrentWeather'
 import Forecast from './components/Forecast'
 import Highlights from './components/Highlights'
+import WeatherMap from './components/weatherMap'
+
 
 function App() {
   return(
@@ -14,9 +14,11 @@ function App() {
         <CurrentWeather />
         <Highlights />
         <Forecast />
-
-
         
+        <div className='w-full h-full rounded-[17px] overflow-hidden'>
+          <WeatherMap />
+        </div>
+
       </div>
       
     </div>

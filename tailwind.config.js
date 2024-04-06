@@ -11,11 +11,10 @@ export default {
       "lblue": "#3ecde0",
       "orange": "#ff8157",
       "dblue": "#1d6ff2",
-      "black": "#191b1f",
-      "grey": "#353942",
+      "black": "#1a1a1a",
+      "grey": "#292929",
       "white": "#fff",
       "red": "red"
-
     }
   },
   plugins: [],

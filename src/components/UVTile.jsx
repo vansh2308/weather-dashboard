@@ -21,8 +21,6 @@ export default function UVTile(props) {
     gradient.addColorStop(1, "rgba(62, 205, 224, 1)");
     gradient.addColorStop(0.5, "rgba(62, 205, 224, 1)");
     gradient.addColorStop(0, "rgba(29, 111, 242, 1)");
-
-    console.log(gradient)
     ctx.fillStyle = gradient;
     ctx.fillRect(20, 20, 200, 100);
 

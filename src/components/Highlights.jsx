@@ -46,7 +46,7 @@ const Searchbar = (props) => {
   return (
     <div className="searchbar  text-white opacity-80">
       <div className="w-full h-1/2 bg-grey rounded-full flex justify-between items-center overflow-hidden">
-        <input type="text" className="grow h-full p-5" style={{ "borderRight": "0.1px solid rgba(255, 255, 255, 0.4)" }} />
+        <input placeholder="Search location" type="text" className="grow h-full p-5" style={{ "borderRight": "0.1px solid rgba(255, 255, 255, 0.4)" }} />
         <button onClick={() => console.log("hi nehal")}> <LuSearch className="m-5 text-[1.5rem] text-white" /> </button>
       </div>
     </div>
