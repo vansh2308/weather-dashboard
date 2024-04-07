@@ -1,8 +1,32 @@
-# React + Vite
+## Realtime Weather Dashboard
+___
+A dashboard for realtime weather data visualisation. Displays realtime weather data like temperature, UV Index, Wind Speed etc. and Forecast data based on users current location or search queries.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src="./src/assets/ss.png" width="100%">
 
-Currently, two official plugins are available:
+### Getting Started
+___
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Open a terminal window and navigate to the directory where you want to clone this repo
+
+```
+$ git clone https://github.com/vansh2308/weather-dashboard.git
+$ cd ./weather-dashboard 
+```
+
+Install all the dependencies
+```
+$ npm install
+$ npm run dev
+```
+
+Just type in http://localhost:5173/ in your browser to open the dashboard 
+
+### Built With
+___
+- React JS
+- Tailwind CSS
+- Redux
+- Mapbox 
+- React-Leaflet
+
