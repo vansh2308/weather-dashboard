@@ -11,17 +11,27 @@ import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocation } from "../features/locationSlice";
 
-
+function one_dp(val){ 
+  return val.toString().substring(0, val.toString().length-1)
+}
 
 export default function Highlights(props) {
+  const weather = useSelector(state => state.weather.value)
+
   return (
     <div className="highlights ">
-      <Tile title={"Wind Speed"} value={7.90} unit={"km/h"} wm={wm1} icon={<FaWind className="text-[1.8rem]" />} />
+      <Tile title={"Wind Speed"} 
+      value={one_dp(weather[1].values.windSpeedAvg)}
+      unit={"km/h"} wm={wm1} icon={<FaWind className="text-[1.8rem]" />} />
       <Searchbar />
-      <Tile title={"Humidity"} value={84} unit={"%"} wm={wm2} icon={<MdOutlineWaterDrop className="text-[1.8rem]" />} />
+      <Tile title={"Humidity"} 
+      value={one_dp(weather[1].values.humidityAvg)} 
+      unit={"%"} wm={wm2} icon={<MdOutlineWaterDrop className="text-[1.8rem]" />} />
       <UVTile />
       <SunTile />
-      <Tile title={"Visibility"} value={3} unit={"km"} wm={wm3} icon={<MdOutlineVisibility className="text-[1.8rem]" />} />
+      <Tile title={"Visibility"} 
+      value={one_dp(weather[1].values.visibilityAvg)}
+      unit={"km"} wm={wm3} icon={<MdOutlineVisibility className="text-[1.8rem]" />} />
 
       <div className="blur-[6rem] w-[30%] h-[2.5rem] absolute right-28 blob" />
     </div>
