@@ -7,6 +7,9 @@ import SunTile from "./SunTile";
 import { FaWind } from "react-icons/fa";
 import { MdOutlineWaterDrop } from "react-icons/md";
 import { MdOutlineVisibility } from "react-icons/md";
+import { useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setLocation } from "../features/locationSlice";
 
 
 
@@ -42,12 +45,40 @@ const Tile = ({ title, value, unit, wm, icon }) => {
 }
 
 
-const Searchbar = (props) => {
+const Searchbar =  (props) => {
+  const inputRef =  useRef(null)
+  const dispatch = useDispatch()
+  const location = useSelector(state => state.location.value)
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const url = `https://geocode.maps.co/search?q=${inputRef.current.value}&api_key=66314bef5aa60213352727creda639e`
+    const options = { method: 'GET' }
+
+    try {
+      const response = await fetch(url, options);
+      const result = await response.json();
+      console.log(result[0]);
+      dispatch(setLocation({
+        "latitude": result[0].lat,
+        "longitude": result[0].lon,
+        "locationName": result[0].display_name
+      }))
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+
+
   return (
     <div className="searchbar  text-white opacity-80">
       <div className="w-full h-1/2 bg-grey rounded-full flex justify-between items-center overflow-hidden">
-        <input placeholder="Search location" type="text" className="grow h-full p-5" style={{ "borderRight": "0.1px solid rgba(255, 255, 255, 0.4)" }} />
-        <button onClick={() => console.log("hi nehal")}> <LuSearch className="m-5 text-[1.5rem] text-white" /> </button>
+        <form className="w-full h-full flex" onSubmit={handleSubmit}>
+        <input ref={inputRef} placeholder="Search location" type="text" className="grow h-full p-5" style={{ "borderRight": "0.1px solid rgba(255, 255, 255, 0.4)" }} />
+        <button type="submit"> <LuSearch className="m-5 text-[1.5rem] text-white" /> </button>
+        </form>
       </div>
     </div>
   )

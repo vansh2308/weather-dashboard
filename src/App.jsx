@@ -5,19 +5,12 @@ import Highlights from './components/Highlights'
 import WeatherMap from './components/weatherMap'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLocation } from './features/locationSlice'
-
-import { setWeather } from './features/weatherSlice'
 
 
 function App() {
-  const dispatch = useDispatch()
   const location = useSelector(state => state.location.value)
 
   useEffect(() => {
-    
-
-
 
     // const geoLocation = async () => {
     //   if (!location.latitude) {

@@ -4,6 +4,7 @@ import { MdOutlinePinDrop } from "react-icons/md";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import watermark from "./../assets/watermark.png"
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 export default function CurrentWeather(props) {
@@ -18,7 +19,7 @@ export default function CurrentWeather(props) {
       <hr className="my-5" style={{ "border": "0.1px solid rgba(255, 255, 255, 0.2)" }} />
       <div className="flex items-center text-xs pl-3 gap-2">
         <MdOutlinePinDrop className="text-[1.2rem]" />
-        <span>{location.locationName}</span>
+        <span className="whitespace-nowrap  overflow-hidden">{location.locationName }</span>
       </div>
       <div className="flex items-center text-xs pl-3 gap-2 mt-3">
         <MdOutlineCalendarMonth className="text-[1.2rem]" />

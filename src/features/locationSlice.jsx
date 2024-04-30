@@ -6,7 +6,7 @@ export const locationSlice = createSlice({
     value: {
       latitude: null,
       longitude: null,
-      place: null
+      locationName: null
     }
   },
   reducers: {
