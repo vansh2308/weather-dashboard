@@ -5,45 +5,36 @@ import Highlights from './components/Highlights'
 import WeatherMap from './components/weatherMap'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
+import { setWeather } from "./features/weatherSlice"
 
 function App() {
   const location = useSelector(state => state.location.value)
-
+  const weather = useSelector(state => state.weather.value)
+  const dispatch = useDispatch()
   useEffect(() => {
+    console.log(weather)
+    async function fetchWeatherDetails() {
+      const weather_url = `https://tomorrow-io1.p.rapidapi.com/v4/weather/forecast?location=${location.latitude}%2C%20${location.longitude}&timesteps=1d&units=metric`;
 
-    // const geoLocation = async () => {
-    //   if (!location.latitude) {
-    //     if (navigator.geolocation) {
-    //       navigator.geolocation.getCurrentPosition((position) => {
-    //         dispatch(setLocation({
-    //           ...location,
-    //           "latitude": position.coords.latitude,
-    //           "longitude": position.coords.longitude
-    //         }))
+      let weather_options = {
+        method: 'GET',
+        headers: {
+          'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+          'X-RapidAPI-Host': 'tomorrow-io1.p.rapidapi.com'
+        }
+      };
+      try {
+        let weather_response = await fetch(weather_url, weather_options);
+        weather_response = await weather_response.json();
+        dispatch(setWeather(weather_response.timelines.daily))
+      } catch (error) {
+        console.error(error);
+      }
 
-    //       })
-    //     } else {
-    //       console.log("Geolocation not enabled")
-    //     }
-    //   }
-    // }
+    }
+    fetchWeatherDetails()
 
-    // const getLocationName = async () => {
-    //   let res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${location.latitude}&longitude=${location.longitude}`)
-    //   res = await res.json()
-    //   dispatch(setLocation({
-    //     ...location,
-    //     "locationName": `${res.city}, ${res.countryName}`
-    //   }))
-    // }
-
-    // geoLocation()
-    // getLocationName()
-
-    // console.log(location)
-
-  }, [location]);
+  }, [location])
 
 
   return (

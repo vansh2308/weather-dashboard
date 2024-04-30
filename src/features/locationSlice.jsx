@@ -4,9 +4,9 @@ export const locationSlice = createSlice({
   name: "location",
   initialState: {
     value: {
-      latitude: null,
-      longitude: null,
-      locationName: null
+      latitude: "26.2389",
+      longitude: '73.0243',
+      locationName: "Jodhpur, India"
     }
   },
   reducers: {

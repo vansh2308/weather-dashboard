@@ -7,7 +7,7 @@ import SunTile from "./SunTile";
 import { FaWind } from "react-icons/fa";
 import { MdOutlineWaterDrop } from "react-icons/md";
 import { MdOutlineVisibility } from "react-icons/md";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLocation } from "../features/locationSlice";
 
@@ -18,10 +18,10 @@ export default function Highlights(props) {
     <div className="highlights ">
       <Tile title={"Wind Speed"} value={7.90} unit={"km/h"} wm={wm1} icon={<FaWind className="text-[1.8rem]" />} />
       <Searchbar />
-      <Tile title={"Humidity"} value={84} unit={"%"} wm={wm2} icon={<MdOutlineWaterDrop  className="text-[1.8rem]"/>} />
+      <Tile title={"Humidity"} value={84} unit={"%"} wm={wm2} icon={<MdOutlineWaterDrop className="text-[1.8rem]" />} />
       <UVTile />
       <SunTile />
-      <Tile title={"Visibility"} value={3} unit={"km"} wm={wm3} icon={<MdOutlineVisibility className="text-[1.8rem]" />}/>
+      <Tile title={"Visibility"} value={3} unit={"km"} wm={wm3} icon={<MdOutlineVisibility className="text-[1.8rem]" />} />
 
       <div className="blur-[6rem] w-[30%] h-[2.5rem] absolute right-28 blob" />
     </div>
@@ -45,11 +45,12 @@ const Tile = ({ title, value, unit, wm, icon }) => {
 }
 
 
-const Searchbar =  (props) => {
-  const inputRef =  useRef(null)
+const Searchbar = (props) => {
+  const inputRef = useRef(null)
   const dispatch = useDispatch()
   const location = useSelector(state => state.location.value)
-  
+
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -59,12 +60,13 @@ const Searchbar =  (props) => {
     try {
       const response = await fetch(url, options);
       const result = await response.json();
-      console.log(result[0]);
       dispatch(setLocation({
         "latitude": result[0].lat,
         "longitude": result[0].lon,
         "locationName": result[0].display_name
       }))
+
+
     } catch (error) {
       console.error(error);
     }
@@ -76,8 +78,8 @@ const Searchbar =  (props) => {
     <div className="searchbar  text-white opacity-80">
       <div className="w-full h-1/2 bg-grey rounded-full flex justify-between items-center overflow-hidden">
         <form className="w-full h-full flex" onSubmit={handleSubmit}>
-        <input ref={inputRef} placeholder="Search location" type="text" className="grow h-full p-5" style={{ "borderRight": "0.1px solid rgba(255, 255, 255, 0.4)" }} />
-        <button type="submit"> <LuSearch className="m-5 text-[1.5rem] text-white" /> </button>
+          <input ref={inputRef} placeholder="Search location" type="text" className="grow h-full p-5" style={{ "borderRight": "0.1px solid rgba(255, 255, 255, 0.4)" }} />
+          <button type="submit"> <LuSearch className="m-5 text-[1.5rem] text-white" /> </button>
         </form>
       </div>
     </div>

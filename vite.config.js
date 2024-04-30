@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 
 const keys = [
   "WEATHER_MAP_URL",
+  "RAPID_API_KEY"
 ]
 
 // https://vitejs.dev/config/
