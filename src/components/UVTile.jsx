@@ -3,6 +3,7 @@ import { Chart, ArcElement } from 'chart.js'
 import { Doughnut } from 'react-chartjs-2';
 import { useRef } from 'react';
 import { useGauge } from 'use-gauge';
+import { useSelector } from 'react-redux';
 // import { Chart } from 'chart.js/auto';
 
 Chart.register(ArcElement)
@@ -11,6 +12,8 @@ Chart.register(ArcElement)
 
 
 export default function UVTile(props) {
+  const weather = useSelector(state => state.weather.value)
+  const location = useSelector(state => state.location.value)
   const canvasRef = useRef(null)
   const baselineRef = useRef(null)
 
@@ -39,7 +42,7 @@ export default function UVTile(props) {
         datasets: [
           {
             label: '# of votes',
-            data: [12, 5],
+            data: [weather[1].values.uvIndexMax, 12-weather[1].values.uvIndexMax],
           }
         ],
       },
@@ -91,7 +94,7 @@ export default function UVTile(props) {
     })
 
 
-  }, [])
+  }, [location])
 
 
   return (
@@ -105,7 +108,7 @@ export default function UVTile(props) {
       </div>
 
       <div className='absolute flex justify-center items-center flex-col top-1/2 left-1/2 -translate-x-1/2'>
-        <h1 className='text-[2.5rem]'>5.5</h1>
+        <h1 className='text-[2.5rem]'>{weather[1].values.uvIndexMax}</h1>
         <h5 className='text-xs font-thin'>UV Index</h5>
       </div>
 

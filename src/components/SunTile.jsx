@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Chart, ArcElement } from 'chart.js'
 import { useRef } from 'react';
 import { IoSunnyOutline } from "react-icons/io5";
+import { useSelector } from 'react-redux';
 
 Chart.register(ArcElement)
 
@@ -9,6 +10,8 @@ Chart.register(ArcElement)
 export default function SunTile(props) {
   const sunCanvasRef = useRef(null)
   const sunBaselineRef = useRef(null)
+  const weather = useSelector(state => state.weather.value)
+  const location = useSelector(state => state.location.value)
 
 
   useEffect(() => {
@@ -87,7 +90,8 @@ export default function SunTile(props) {
     })
 
 
-  }, [])
+  }, [location])
+  
 
 
   return (
@@ -98,11 +102,11 @@ export default function SunTile(props) {
       <div className='flex justify-between px-[6%] bottom-4 text-yellow text-xs font-normal absolute w-full'>
         <div className='flex flex-col items-center'>
           <span>Sunrise</span>
-          <span className='text-white text-sm font-light'>5:45 AM</span>
+          <span className='text-white text-sm font-light'>{timeFormat(weather[1].values.sunriseTime)}</span>
         </div>
         <div className='flex flex-col items-center'>
           <span>Sunset</span>
-          <span className='text-white text-sm font-light'>7:45 PM</span>
+          <span className='text-white text-sm font-light'>{timeFormat(weather[1].values.sunsetTime)}</span>
         </div>
       </div>
 
@@ -111,4 +115,8 @@ export default function SunTile(props) {
       </div>
     </div>
   )
+}
+
+function timeFormat(ISOtime){
+  return (new Date(ISOtime)).toLocaleTimeString().substring(0, 5)
 }

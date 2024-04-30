@@ -64,7 +64,7 @@ const Searchbar = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const url = `https://geocode.maps.co/search?q=${inputRef.current.value}&api_key=66314bef5aa60213352727creda639e`
+    const url = `https://geocode.maps.co/search?q=${inputRef.current.value}&api_key=${process.env.GEOCODE_API}`
     const options = { method: 'GET' }
 
     try {
