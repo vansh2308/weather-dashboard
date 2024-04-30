@@ -6,23 +6,51 @@ import WeatherMap from './components/weatherMap'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLocation } from './features/locationSlice'
-import getUserLocation from './features/getUserLocation'
+
 import { setWeather } from './features/weatherSlice'
 
 
 function App() {
   const dispatch = useDispatch()
+  const location = useSelector(state => state.location.value)
 
-  useEffect( () => { 
-    const getLocationWeather = async () => {
-      let {userLocation, rtWeather} = await getUserLocation()
-      dispatch(setLocation(userLocation)) 
-      dispatch(setWeather(rtWeather))
+  useEffect(() => {
+    
 
-    }
 
-    getLocationWeather()
-  }, []);
+
+    // const geoLocation = async () => {
+    //   if (!location.latitude) {
+    //     if (navigator.geolocation) {
+    //       navigator.geolocation.getCurrentPosition((position) => {
+    //         dispatch(setLocation({
+    //           ...location,
+    //           "latitude": position.coords.latitude,
+    //           "longitude": position.coords.longitude
+    //         }))
+
+    //       })
+    //     } else {
+    //       console.log("Geolocation not enabled")
+    //     }
+    //   }
+    // }
+
+    // const getLocationName = async () => {
+    //   let res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${location.latitude}&longitude=${location.longitude}`)
+    //   res = await res.json()
+    //   dispatch(setLocation({
+    //     ...location,
+    //     "locationName": `${res.city}, ${res.countryName}`
+    //   }))
+    // }
+
+    // geoLocation()
+    // getLocationName()
+
+    // console.log(location)
+
+  }, [location]);
 
 
   return (
