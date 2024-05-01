@@ -5,14 +5,12 @@ import { MdOutlineCalendarMonth } from "react-icons/md";
 import watermark from "./../assets/watermark.png"
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import {getIconPresent} from "../features/getIcon";
+import {getIconPresent, getWeatherSummary} from "../features/getIcon";
 
 
 export default function CurrentWeather(props) {
   const weather = useSelector(state => state.weather.value)
   const location = useSelector(state => state.location.value)
-
-
 
   return (
     <div className='glassmorphism min-h-[48vh] relative flex flex-col justify-end p-5 text-white overflow-hidden'>
@@ -20,7 +18,7 @@ export default function CurrentWeather(props) {
       {getIconPresent(weather[1].values)}
       <h1 className="text-[3rem] font-normal ml-3">{Math.floor(weather[1].values.temperatureAvg)} &deg;C</h1>
 
-      <span className="text-xs ml-3 ">Cloudy & Sunny</span>
+      {getWeatherSummary(weather[1].values)}
       <hr className="my-5" style={{ "border": "0.1px solid rgba(255, 255, 255, 0.2)" }} />
       <div className="flex items-center text-xs pl-3 gap-2">
         <MdOutlinePinDrop className="text-[1.2rem]" />
