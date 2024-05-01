@@ -25,7 +25,7 @@ export default function CurrentWeather(props) {
       </div>
       <div className="flex items-center text-xs pl-3 gap-2 mt-3">
         <MdOutlineCalendarMonth className="text-[1.2rem]" />
-        <span>{new Date().toLocaleString()}</span>
+        <span>{ (new Date()).toDateString().substring(0, (new Date()).toDateString().length-4) }</span>
       </div>
 
       <img src={watermark} className="absolute -z-10 blur-[5rem] w-[17rem] left-1/6 opacity-1/2" />
