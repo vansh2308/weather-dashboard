@@ -4,7 +4,8 @@ import react from '@vitejs/plugin-react'
 const keys = [
   "WEATHER_MAP_URL",
   "RAPID_API_KEY",
-  "GEOCODE_API"
+  "GEOCODE_API",
+  "TIME_GEOLOC_API"
 ]
 
 // https://vitejs.dev/config/

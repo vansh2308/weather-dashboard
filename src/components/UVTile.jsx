@@ -94,7 +94,7 @@ export default function UVTile(props) {
     })
 
 
-  }, [location])
+  }, [weather])
 
 
   return (

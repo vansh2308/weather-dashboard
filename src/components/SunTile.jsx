@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Chart, ArcElement } from 'chart.js'
 import { useRef } from 'react';
 import { IoSunnyOutline } from "react-icons/io5";
@@ -15,6 +15,7 @@ export default function SunTile(props) {
 
 
   useEffect(() => {
+
     const ctx = sunCanvasRef.current.getContext("2d")
     const gradient = ctx.createLinearGradient(20, 0, 220, 0);
     gradient.addColorStop(1, "#ff8157");
@@ -38,7 +39,7 @@ export default function SunTile(props) {
         datasets: [
           {
             label: '# of votes',
-            data: [12, 5],
+            data: [6, 4],
           }
         ],
       },
@@ -88,9 +89,7 @@ export default function SunTile(props) {
 
       }
     })
-
-
-  }, [location])
+  }, [weather])
   
 
 
