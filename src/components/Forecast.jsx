@@ -2,6 +2,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { useEffect, useState } from "react";
 import weatherIcon from "./../assets/weather.png"
 import { useSelector } from "react-redux";
+import { getIconForecast } from "../features/getIcon";
 
 export default function Forecast(props) {
   const [display, setDisplay] = useState(false)
@@ -54,7 +55,9 @@ const ForecastItem = ({item}) => {
     <li className="py-4 w-full flex items-center justify-between text-[0.7rem] font-extralight"
         style={{ "borderTop": "0.1px solid rgba(255, 255, 255, 0.2)" }}>
 
-      <img src={weatherIcon} className="w-[2.3rem] mr-10"/>
+      {/* <img src={weatherIcon} className="w-[2.3rem] mr-10"/> */}
+      {getIconForecast(item.values)}
+      
       <h1 className=""> <span className="font-medium text-lg">{Math.floor(item.values.temperatureMax)} &deg;/</span>{Math.floor(item.values.temperatureMin)} </h1>
       
       <p className="grow text-right mr-3">

@@ -36,6 +36,7 @@ function App() {
 
   useEffect(() => {
     fetchWeather()
+    console.log(weather)
   }, [fetchWeather])
 
 
